@@ -192,10 +192,9 @@ class ImportData(APIView):
                         try:
                             validate(instance={"Name" : minister_name, "date of birth" : date_of_birth, "place of birth" : place_of_birth,
                             "Languages" : languages,"Political party" : party, "Proffesion" : proffesion, "e-mail" : str(minister_email)}, schema=schema)
-                           
-                            try: 
-                                minister = models.Politic.objects.get(minister_name=minister_name)
-                            except Exception:
+                             
+                            minister = models.Politic.objects.filter(date_of_birth=date_of_birth).filter(minister_name=minister_name)
+                            if len(minister) == 0: 
                                 models.Politic.objects.create(
                                 minister_name=minister_name,
                                 email=minister_email,

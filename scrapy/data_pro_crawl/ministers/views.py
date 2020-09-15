@@ -18,7 +18,7 @@ import os, sys
 
 class Politician(APIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
     def get(self, request):
 
@@ -94,7 +94,7 @@ class Politician(APIView):
 
 class ImportData(APIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
 
     def get(self, request):
